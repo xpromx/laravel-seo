@@ -8,6 +8,13 @@ class Meta
     public $seo  = false;
 
 
+    /**
+     * Construct of the Meta Class
+     *
+     * @param Seo $seo
+     * @return Void
+     */
+
     public function __construct( $seo )
     {
         $this->seo = $seo;
@@ -20,6 +27,11 @@ class Meta
     }
 
 
+    /**
+     * Set all the default meta in the config file
+     *
+     * @return Void
+     */
     public function defaults()
     {
         foreach( config('seo.meta') as $key=>$value )
@@ -31,7 +43,13 @@ class Meta
         }
     }
 
-    public function trans( $key, $default=false )
+    /**
+     * Get translation for the meta if exits
+     *
+     * @param String $key
+     * @return String
+     */
+    public function trans( $key )
     {
         $lang_key = 'seo.' . $this->seo->current_route() . '.' . $key;
         $data = $this->seo->getData() ?? [];
@@ -43,6 +61,11 @@ class Meta
         return __( $lang_key , $data );
     }
     
+    /**
+     * Set the Title tag by default
+     *
+     * @return Void
+     */
     public function title()
     {
         if( !$this->seo->hasMeta('title') )
@@ -51,6 +74,11 @@ class Meta
         }
     }
 
+    /**
+     * Set the Description meta by default
+     *
+     * @return Void
+     */
     public function description()
     {
         
@@ -61,7 +89,11 @@ class Meta
 
     }
 
-
+    /**
+     * Set the Keywords meta by default
+     *
+     * @return Void
+     */
     public function keywords()
     {
         
@@ -72,6 +104,11 @@ class Meta
 
     }
 
+    /**
+     * render all the metas
+     *
+     * @return String
+     */
     public function render()
     {
         $meta[] = "\n";
@@ -84,6 +121,11 @@ class Meta
         return implode("\n", $meta);
     }
 
+    /**
+     * Render and individual Meta
+     *
+     * @return String
+     */
     public function renderMeta( $key, $value )
     {
 
