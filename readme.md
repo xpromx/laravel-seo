@@ -3,12 +3,14 @@
 
 ### Service Provider
 Add the service provider in config/app.php
+
 ```
 Travelience\Seo\SeoServiceProvider::class,
 ```
 
 ### Alias
 Add the SEO alias in config/app.php
+
 ```
 'SEO' => Travelience\Seo\Facades\Seo::class,`
 ```
@@ -24,15 +26,15 @@ php artisan vendor:publish
 If you support multi-language you can use the lang folder creating a file seo.php for each language to automatically translate the SEO meta for each language.
 
 The key is the route name for example in routes/web.php
-```
-Route::get('/'  	  , ['as' => 'home', 'uses' => 'Web\HomeController@index']);
-Route::get('/about' , ['as' => 'about', 'uses' => 'Web\AboutController@index']);
+```php
+Route::get('/'  	             , ['as' => 'home', 'uses' => 'Web\HomeController@index']);
+Route::get('/about'            , ['as' => 'about', 'uses' => 'Web\AboutController@index']);
 Route::get('/company/reviews'  , ['as' => 'company.reviews', 'uses' => 'Web\CompanyController@reviews']);
 ```
 
 The translation file for the previous routes will be:
 
-```
+```php
 <?php
 
 return [
@@ -56,9 +58,9 @@ return [
 ```
 
 ### Translations variables
-Set variables to be replaced in translations automatically
+Set variables to be replaced in translations automatically.
 
-```
+```php
 <?php
 
 namespace App\Http\Controllers\Web;
@@ -83,8 +85,9 @@ class HomeController extends Controller
 ### MetaTags
 Defaults metatags are in the config/seo.php file, but if you need to add one meta to a specific page, use the follow method:
 
-````
+```php
 SEO::meta('name', 'value');
 ```
+
 
 
