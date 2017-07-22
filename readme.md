@@ -89,5 +89,22 @@ Defaults metatags are in the config/seo.php file, but if you need to add one met
 SEO::meta('name', 'value');
 ```
 
+### MicroFormats
+If you need to set a microformat, check this example:
+
+```php
+SEO::microformat('TouristAttraction', [
+
+  'name'            => 'Asakusa', 
+  'description'     => ':description', 
+  'aggregateRating' => [
+
+    '@type'       => 'AggregateRating', 
+    'ratingValue' => '5.0' 
+
+  ]
+
+]);
+````
 
 
