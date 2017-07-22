@@ -28,7 +28,7 @@ The key is the route name for example in routes/web.php
 Route::get('/'  	  , ['as' => 'home', 'uses' => 'Web\HomeController@index']);
 Route::get('/about' , ['as' => 'about', 'uses' => 'Web\AboutController@index']);
 Route::get('/company/reviews'  , ['as' => 'company.reviews', 'uses' => 'Web\CompanyController@reviews']);
-``
+```
 
 The translation file for the previous routes will be:
 
@@ -83,7 +83,7 @@ class HomeController extends Controller
 ### MetaTags
 Defaults metatags are in the config/seo.php file, but if you need to add one meta to a specific page, use the follow method:
 
-```
+````
 SEO::meta('name', 'value');
 ```
 
