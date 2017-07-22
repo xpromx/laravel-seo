@@ -11,6 +11,18 @@ return [
     |
     */
     'localization' => true,
+    'locales' => ['en', 'es', 'ja'],
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Title Separation
+    |--------------------------------------------------------------------------
+    |
+    | Set the separation character between the page title and the Site name
+    | Title separator options - – — · • * ⋆ | ~ « » < >
+    */
+    'separator' => '-',
 
 
     /*
@@ -22,6 +34,7 @@ return [
     | are going to be used if you forget to set one of them for a specific page
     |
     */
+    'site_name' => env('APP_NAME'),
     'title' => env('APP_NAME'),
     'description' => 'Welcome to '. env('APP_NAME'),
     'keywords' => env('APP_NAME'),
@@ -42,8 +55,10 @@ return [
 
                 'og:type'       => 'web',
                 'og:title'      => env('APP_NAME'),
-                'og:site_name'  => env('APP_NAME'),
+                'og:description'=> ':description',
+                'og:site_name'  => ':site_name',
                 'og:image'      => env('SITE_URL') . '/img/facebook-banner.jpg',
+                'og:url'        => ':url',
 
                 // Facebook App
 
