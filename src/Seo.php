@@ -165,6 +165,11 @@ class Seo
 
         $replace = $replace ?? $this->getData();
 
+        if( count($replace) == 0 )
+        {
+            return $line;
+        }
+
         foreach ($replace as $key => $value) {
             $line = str_replace(
                 [':'.$key, ':'.strtoupper($key), ':'.ucfirst($key)],
