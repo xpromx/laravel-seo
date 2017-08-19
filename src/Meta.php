@@ -113,6 +113,11 @@ class Meta
            $title = $this->trans('title');
         }
 
+        if( !$title )
+        {
+            $title = title_case( current_route() );
+        }
+
         return $this->seo->meta('title', $title . $separator);
         
     }
