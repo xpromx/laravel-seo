@@ -84,13 +84,18 @@ class Meta
      * @param String $key
      * @return String
      */
-    public function trans( $key )
+    public function trans( $key, $default=true )
     {
         $lang_key = 'seo.' . $this->seo->current_route() . '.' . $key;
         $data = $this->seo->getData() ?? [];
 
-        if( !app('translator')->has($lang_key) )
+        if( !app('translator')->has($lang_key))
         {
+            if( !$default )
+            {
+                return false;
+            }
+
             return $this->seo->makeReplacements( config('seo.' . $key ) );
         }
 
@@ -108,14 +113,14 @@ class Meta
 
         $title = $this->seo->getMeta('title');
 
-        if( !$this->seo->hasMeta('title') )
+        if( !$title )
         {
-           $title = $this->trans('title');
+           $title = $this->trans('title', false);
         }
 
         if( !$title )
         {
-            $title = title_case( current_route() );
+            $title = title_case( $this->seo->current_route() );
         }
 
         return $this->seo->meta('title', $title . $separator);
